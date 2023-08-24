@@ -1,12 +1,27 @@
+use rand::prelude::{ SliceRandom, ThreadRng };
+
+use self::piece::{ Piece, Kind as PieceKind };
+
+mod piece;
+
 pub struct Engine {
-    board: Board
+    board: Board,
+    bag: Vec<PieceKind>,
+    rng: ThreadRng
 }
 
 impl Engine {
     pub fn new() -> Self {
         Engine {
-            board: Board::blank()
+            board: Board::blank(),
+            bag: Vec::new(),
+            rng: ThreadRng::default()
         }
+    }
+
+    fn refill_bag(&mut self) {
+        // fill all pices in bag
+        self.bag.shuffle(&mut self.rng)
     }
 }
 
