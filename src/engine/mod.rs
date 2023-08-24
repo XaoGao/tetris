@@ -1,4 +1,4 @@
-use rand::prelude::{ SliceRandom, ThreadRng };
+use rand::{prelude::{ SliceRandom, ThreadRng }, thread_rng};
 
 use self::piece::{ Piece, Kind as PieceKind };
 
@@ -15,12 +15,13 @@ impl Engine {
         Engine {
             board: Board::blank(),
             bag: Vec::new(),
-            rng: ThreadRng::default()
+            rng: thread_rng()
         }
     }
 
     fn refill_bag(&mut self) {
-        // fill all pices in bag
+        debug_assert!(self.bag.is_empty());
+        self.bag.extend_from_slice(PieceKind::ALL.as_slice());
         self.bag.shuffle(&mut self.rng)
     }
 }
