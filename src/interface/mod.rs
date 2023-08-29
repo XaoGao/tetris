@@ -1,15 +1,13 @@
-use crate::engine::Engine;
+pub use crate::engine::Engine;
 
 pub struct Interface {
-  engine: Engine
+    engine: Engine,
 }
 
 impl Interface {
     pub fn run(engine: Engine) {
-      let interface = Self {
-        engine
-      };
-      drop(interface);
-      todo!("Run game")
+        let interface = Self { engine };
+        drop(interface);
+        todo!("Run game");
     }
 }

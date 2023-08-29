@@ -1,13 +1,17 @@
-use rand::{prelude::{ SliceRandom, ThreadRng }, thread_rng};
+use rand::{
+    prelude::{SliceRandom, ThreadRng},
+    thread_rng,
+};
 
-use self::piece::{ Piece, Kind as PieceKind };
+use self::piece::{Kind as PieceKind, Piece};
 
 mod piece;
 
 pub struct Engine {
     board: Board,
     bag: Vec<PieceKind>,
-    rng: ThreadRng
+    rng: ThreadRng,
+    cursor: Option<Piece>,
 }
 
 impl Engine {
@@ -15,7 +19,8 @@ impl Engine {
         Engine {
             board: Board::blank(),
             bag: Vec::new(),
-            rng: thread_rng()
+            rng: thread_rng(),
+            cursor: None,
         }
     }
 

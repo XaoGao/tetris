@@ -8,26 +8,32 @@ pub enum Kind {
     L,
     J,
     S,
-    Z
+    Z,
 }
 
 impl Kind {
-    pub const ALL: [Self; 7] = [Self::Square, Self::Line, Self::T, Self::L, Self::J, Self::S, Self::Z];
+    pub const ALL: [Self; 7] = [
+        Self::Square,
+        Self::Line,
+        Self::T,
+        Self::L,
+        Self::J,
+        Self::S,
+        Self::Z,
+    ];
 }
 
 pub enum Rotation {
     North,
     South,
     East,
-    West
+    West,
 }
 
 pub(super) struct Piece {
     pub kind: Kind,
     pub position: Vector2<usize>,
-    pub rotation: Rotation
+    pub rotation: Rotation,
 }
 
-impl Piece {
-
-}
+impl Piece {}
