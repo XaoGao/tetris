@@ -29,6 +29,10 @@ impl Engine {
         self.bag.extend_from_slice(PieceKind::ALL.as_slice());
         self.bag.shuffle(&mut self.rng)
     }
+
+    fn place_cursor() {
+        todo!("implements")
+    }
 }
 
 struct Board([bool; Self::SIZE]);
